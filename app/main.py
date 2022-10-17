@@ -2,14 +2,11 @@
 
 from fastapi import FastAPI
 
-from app.routers.vote import vote
 from . import models
 from .database import engine
 from .routers import post, users, auth , vote
 from .config import settings
 from fastapi.middleware.cors import CORSMiddleware
-import tkinter 
-
 
 
 
@@ -43,5 +40,5 @@ app.include_router(vote.router)
 
 
 @app.get("/")
-async def root():
+def root():
     return{"message":"Hello world == 123 "}

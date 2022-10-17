@@ -1,7 +1,7 @@
 from fastapi import Response, status, HTTPException, Depends, APIRouter
 from .. import models, schemas,oauth2, database
 from sqlalchemy.orm import Session
-import tkinter 
+
 
 router = APIRouter(
     prefix= '/vote',

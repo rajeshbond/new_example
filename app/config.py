@@ -1,6 +1,6 @@
 
 from pydantic import BaseSettings
-import tkinter 
+
 
 
 class Settings(BaseSettings):
