@@ -1,5 +1,5 @@
 from passlib.context import CryptContext
-from tkinter import tkinter as TK
+import tkinter 
 
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated = "auto")

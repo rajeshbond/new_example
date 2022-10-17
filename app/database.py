@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from tkinter import tkinter as TK
+import tkinter 
 from .config import settings
 import time
 

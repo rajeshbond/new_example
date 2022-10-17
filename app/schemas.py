@@ -6,7 +6,7 @@ from pydantic import BaseModel, EmailStr , conint
 from typing import Optional
 from tkinter import tkinter as TK
 from app.models import *
-from tkinter import tkinter as TK
+import tkinter 
 
 
 class UserCreate(BaseModel):
