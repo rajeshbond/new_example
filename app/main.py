@@ -8,7 +8,8 @@ from .database import engine
 from .routers import post, users, auth , vote
 from .config import settings
 from fastapi.middleware.cors import CORSMiddleware
-from tkinter import tkinter as TK
+from tkinter import tkinter 
+
 
 
 
