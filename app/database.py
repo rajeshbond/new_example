@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from psycopg2.extras import RealDictConnection
-from psycopg2 import *
+import psycopg2
 from .config import settings
 
 
