@@ -1,7 +1,5 @@
  
-
 from fastapi import FastAPI
-
 from . import models
 from .database import engine
 from .routers import post, users, auth , vote
@@ -9,11 +7,7 @@ from .config import settings
 from fastapi.middleware.cors import CORSMiddleware
 
 
-
-
-
-
-# models.Base.metadata.create_all(bind=engine) # commented becase now alembic is genetatic the table for us
+models.Base.metadata.create_all(bind=engine) # commented becase now alembic is genetatic the table for us
 
 app = FastAPI()
 

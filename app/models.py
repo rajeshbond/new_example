@@ -1,5 +1,4 @@
 
-from cgitb import text
 from enum import unique    # added 
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey #added 
 from sqlalchemy.sql.sqltypes import TIMESTAMP # added 
@@ -7,7 +6,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.sql.expression import text  #added 
 from .database import Base #added
 
-from tkinter import CASCADE
 
 class Post(Base):
     __tablename__ = "posts1"

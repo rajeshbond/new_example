@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from .config import settings
-import time
+
 
 
 # SQLALCHEMY_DATABASE_URL = 'postgressql://postgres:Rajesh123@localhost/fastapi' # Dont know why this is not working 
