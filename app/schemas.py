@@ -4,6 +4,7 @@ from operator import le
 from pydantic import BaseModel, EmailStr , conint
 from typing import Optional
 from app.models import *
+from pydantic.types import conlist
 
 
 
