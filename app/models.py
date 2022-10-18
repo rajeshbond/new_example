@@ -27,7 +27,7 @@ class User(Base):
     created_at = Column(TIMESTAMP(timezone=True), nullable = False,
                         server_default = text('now()') )     # need to import text for SQL express 
     
-    phone_number =  Column(String)
+ 
 class Votes(Base):
     __tablename__ = "votes"
     post_id = Column(Integer,
