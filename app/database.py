@@ -2,9 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from psycopg2.extras import RealDictConnection
-import psycopg2
 from .config import settings
 
+#from the main 
 
 
 # SQLALCHEMY_DATABASE_URL = 'postgressql://postgres:Rajesh123@localhost/fastapi' # Dont know why this is not working 
