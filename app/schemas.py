@@ -11,7 +11,7 @@ from pydantic.types import conlist
 class UserCreate(BaseModel):
     email: EmailStr           # Check for proper email syntex 
     password : str
-    
+
     class Config:
         orm_mode = True  # original 
  
@@ -19,6 +19,7 @@ class UserOut(BaseModel):  # Select BaseMolel is we select UserCreate then passw
     id: int
     email: EmailStr
     created_at: datetime
+
     
     class Config:
         orm_mode = True  

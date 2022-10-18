@@ -2,7 +2,7 @@
 from enum import unique    # added 
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey #added 
 from sqlalchemy.sql.sqltypes import TIMESTAMP # added 
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship # added 
 from sqlalchemy.sql.expression import text  #added 
 from .database import Base #added
 
@@ -39,7 +39,3 @@ class Votes(Base):
                      ForeignKey("users.id",ondelete="CASCADE"),
                      primary_key = True)
     
-class User(Base):
-    __tablename__ = "users_test " 
-    id = Column(Integer, primary_key=True, nullable = False)
-    email = Column(String,nullable = False, unique = True)
