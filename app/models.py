@@ -25,7 +25,9 @@ class User(Base):
     email = Column(String,nullable = False, unique = True)
     password = Column(String,nullable = False)
     created_at = Column(TIMESTAMP(timezone=True), nullable = False,
-                        server_default = text('now()') )     # need to import text for SQL express 
+                        server_default = text('now()') ) 
+    phone = Column(String)
+    # need to import text for SQL express 
     
  
 class Votes(Base):
@@ -36,3 +38,8 @@ class Votes(Base):
     user_id = Column(Integer,
                      ForeignKey("users.id",ondelete="CASCADE"),
                      primary_key = True)
+    
+class User(Base):
+    __tablename__ = "users_test " 
+    id = Column(Integer, primary_key=True, nullable = False)
+    email = Column(String,nullable = False, unique = True)
