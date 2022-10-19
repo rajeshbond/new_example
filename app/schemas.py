@@ -36,7 +36,7 @@ class UserLogin(BaseModel):
 class PostBase(BaseModel):
     title: str
     content: str
-    publish: bool = True
+    published: bool = True
            
 class PostCreate(PostBase):
     pass
