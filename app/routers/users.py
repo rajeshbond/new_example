@@ -21,6 +21,13 @@ def create_users(user: schemas.UserCreate, db: Session = Depends(get_db)):
     
     hased_password = utls.hash(user.password)
     user.password = hased_password
+    
+    already_user_query = db.query(models.User).filter(models.User.email == user.email)
+    
+    if already_user_query.first():
+        raise HTTPException(status_code= status.HTTP_404_NOT_FOUND, detail=f" user name {user.email} not  avalable please chose another user id ") 
+      
+    
     new_user = models.User(**user.dict())
     db.add(new_user)  # need to add the post 
     db.commit()  
