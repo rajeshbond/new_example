@@ -25,7 +25,7 @@ def create_users(user: schemas.UserCreate, db: Session = Depends(get_db)):
     already_user_query = db.query(models.User).filter(models.User.email == user.email)
     
     if already_user_query.first():
-        raise HTTPException(status_code= status.HTTP_404_NOT_FOUND, detail=f" user name {user.email} not  avalable please chose another user id ") 
+        raise HTTPException(status_code= status.HTTP_404_NOT_FOUND, detail=f" user already in use {user.email} , please chose another user id ") 
       
     
     new_user = models.User(**user.dict())
