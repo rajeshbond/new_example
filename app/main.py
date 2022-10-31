@@ -1,10 +1,13 @@
  
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from . import models
 from .database import engine
 from .routers import post, users, auth , vote
 from .config import settings
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 
 models.Base.metadata.create_all(bind=engine) # commented becase now alembic is genetatic the table for us
@@ -30,9 +33,10 @@ app.include_router(users.router)
 app.include_router(auth.router)
 app.include_router(vote.router)
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
-
-
-@app.get("/")
-def root():
-    return{"message":"Hello world == 123 "}
+@app.get("/",response_class=HTMLResponse)
+def root(request: Request):
+    return templates.TemplateResponse("index.html",{"request": request})
+    # return{"message":"Hello world == 123 "}

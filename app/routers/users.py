@@ -1,8 +1,11 @@
 
-from .. import models, schemas, utls # importing models schemase , utls 
-from fastapi import Response, status, HTTPException, Depends, APIRouter
-from sqlalchemy.orm import Session
-from ..database import get_db
+import email
+import re
+from .. import models, schemas, utls # importing models schemase , utls  # added 
+from .. import models, schemas, utls,oauth2 # importing models schemase , utls  # added
+from fastapi import Response, status, HTTPException, Depends, APIRouter # added 
+from sqlalchemy.orm import Session # added
+from ..database import get_db #added
 
 
 router = APIRouter(
@@ -43,9 +46,20 @@ def get_user(id: int,db: Session = Depends(get_db)):
     user_query = db.query(models.User).filter(models.User.id == id)
     user = user_query.first()
     if not user:
-        raise HTTPException(status_code= status.HTTP_404_NOT_FOUND, detail=f"No Post avalable for ID {id}") 
+        raise HTTPException(status_code= status.HTTP_404_NOT_FOUND, detail=f" {id} no user avalable ") 
     
     return user
 
-#--------------------Search user by ID--------------------------------------------------
-    
+# --------------------Search user by ID--------------------------------------------------
+
+@router.patch("/changepwd",response_model= schemas.UserOut)
+def password_rest(user:schemas.UserChangePassword, db: Session = Depends(get_db),current_user: int = Depends(oauth2.get_current_user) ):
+      
+    if not utls.verify(user.password, current_user.password):
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail= "Invalid credentials")
+       
+    hased_password = utls.hash(user.password_new)
+    user.password = hased_password
+    current_user.password = user.password
+    db.commit()
+    return current_user

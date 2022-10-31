@@ -1,5 +1,6 @@
 
 from datetime import datetime
+import email
 from operator import le
 from pydantic import BaseModel, EmailStr , conint
 from typing import Optional
@@ -8,9 +9,13 @@ from pydantic.types import conlist
 
 
 
+
 class UserCreate(BaseModel):
     email: EmailStr           # Check for proper email syntex 
     password : str
+    name:  str
+    phone: str
+    
 
     class Config:
         orm_mode = True  # original 
@@ -18,6 +23,8 @@ class UserCreate(BaseModel):
 class UserOut(BaseModel):  # Select BaseMolel is we select UserCreate then password field also get inhertited by default 
     id: int
     email: EmailStr
+    name: str
+    phone: str
     created_at: datetime
 
     
@@ -28,9 +35,21 @@ class UserOut(BaseModel):  # Select BaseMolel is we select UserCreate then passw
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+   
     class Config:
         orm_mode = True  
-
+class UserChangePassword(BaseModel):
+    password: str
+    password_new: str
+    
+class UserForgetlink(BaseModel):
+    email: str
+    class Config:
+        orm_mode = True 
+class UserForgetPasswordOut(BaseModel):
+    id: int
+    class Config:
+        orm_mode = True 
  
  
 class PostBase(BaseModel):
